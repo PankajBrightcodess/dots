@@ -106,6 +106,58 @@ class Home extends CI_Controller {
 		tinifyresizeimage(".".$src,400,400,"cover");
 		print_r($src);
 	}
+
+	public function registrationlist(){
+		
+		$data['title'] = "Registration List";
+		$data['datatable'] = true;
+		$data['registerlist'] = $this->Account_model->getregistrationlist();
+		// echo PRE;
+		// print_r($data);die;
+		$this->template->load('pages','registration',$data);
+		
+	}
+
+
+	   public function create_pdf(){
+                $id =$this->uri->segment(3); 
+                $getdetails = array();
+                $getdetails = $this->Account_model->get_singlerecord($id);
+                // echo PRE;
+                // print_r( $getdetails);die;
+                $pdf = $this->customfpdf->getInstance();
+                $pdf->AliasNbPages();
+                $pdf->AddPage();
+                $pdf->Header('Arial');
+                $pdf->SetFont('Times','',25);
+
+               $pdf->Cell(0,10,'Doer Or Thinker.',0,0,'C');
+                $pdf->SetFont('Arial','B',8);
+                $pdf->Cell(0,0,'',0,1,'C');
+                $pdf->SetFont('Arial','B',15);
+                $pdf->Cell(0,30,'Admin Card',0,1,'C');
+                $pdf->Cell(0,0,'',1,1,'C');
+                $pdf->Cell(0,3,'',0,1,'C');
+                $pdf->SetFont('Arial','B',9);
+                // $pdf->Cell(20,5,'Sl. No.',0,0,'C');
+                $pdf->Cell(20,5,'Name :  ',0,0,'C');
+                $pdf->Cell(35,5,$getdetails[0]['name'],0,1,'C');
+                $pdf->Cell(30,5,' ',0,1,'C');
+                $pdf->Cell(25,5,'Exam Date:',0,0,'C');
+                $pdf->Cell(25,5,date('d-m-Y'),0,1,'C');
+                $pdf->Cell(30,5,' ',0,1,'C');
+                $pdf->Cell(30,5,'Exam Center :',0,0,'C');
+                $pdf->Cell(35,5,'Ranchi Collage ranchi',0,1,'C');
+                 $pdf->Cell(30,5,' ',0,1,'C');
+                $pdf->Cell(30,5,'Exam Time :',0,0,'C');
+                $pdf->Cell(25,5,'09:11 AM',0,1,'C');
+                // $pdf->SetFont('Arial','',8);
+                
+    
+                
+                $file =  date('Ymdhis').'_details.pdf';
+                $pdf->Output($file,'I');
+            }
 	
 	public function alldata($token=''){
 		$this->load->library('alldata');

@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session','template','database','email','amount','upload','alldata');
+$autoload['libraries'] = array('session','template','database','email','amount','upload','alldata','CustomFPDF');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Account_model');
+$autoload['model'] = array('Account_model','Website_model');

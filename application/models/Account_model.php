@@ -37,6 +37,7 @@ class Account_model extends CI_Model{
 			}
 		}
 		if(!isset($result['verify'])){ $result=array('verify'=>"Wrong Credentials!"); }
+
 		return $result;
 	}
 	
@@ -324,5 +325,38 @@ class Account_model extends CI_Model{
 				$this->db->update("sidebar",$update,array("id"=>$row['id']));
 			}
 		}
+	}
+
+
+
+
+	public function getregistrationlist(){
+		$this->db->where('payment_status',1);
+		$this->db->select('*');
+		$this->db->from('dot_registration');
+		$qry = $this->db->get();
+		if($qry->num_rows()>0){
+			return $qry->result_array();
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+
+	public function get_singlerecord($id){
+		$this->db->where('id',$id);
+		$this->db->select('*');
+		$this->db->from('dot_registration');
+		$qry = $this->db->get();
+		if($qry->num_rows()>0){
+			return $qry->result_array();
+		}
+		else
+		{
+			return false;
+		}
+
 	}
 }
