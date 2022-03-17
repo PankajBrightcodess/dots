@@ -2,19 +2,11 @@
    <div class="abouOverlay">
       <div class="container">
          <center>
-            <h2 style="color: #8500A8;">OTHER BENEFITS FOR TOPPER</h2>
+            <h2 style="color: #8500A8;">Welcome To Doer Or Thinker</h2>
          </center>
          <hr style="border: 1px solid black">
          <div class="row">
-            <div class="col-md-12">
-            <ul>
-               <li><h5 style="text-align: justify; color: black">Cash prize.</h5></li>
-               <li><h5 style="text-align: justify; color: black">Free services of FULLMARKS (answer writing skills).</h5></li>
-               <li><h5 style="text-align: justify; color: black">Business scholarship of rupees 5lakh.</h5></li>
-               <li><h5 style="text-align: justify; color: black">Educational loan for higher studies in india/ foregin countries.</h5></li>
-               <li><h5 style="text-align: justify; color: black">Medal and certificate.</h5></li>
-            </ul>
-           <!--  <div class="col-md-6">
+            <div class="col-md-6">
                <h5 style="color: #8500A8;">NORMALISATION FOR CLASS 2nd TO 5th</h5>
                <table class="table" style="font-weight:700">
                   <thead>
@@ -46,8 +38,8 @@
                      </tr>
                   </tbody>
                </table>
-            </div> -->
-            <!-- <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
                <h5 style="color: #8500A8;">NORMALISATION FOR CLASS 6th TO 10th</h5>
                <table class="table" style="font-weight:700">
                   <thead>
@@ -85,7 +77,7 @@
                      </tr>
                   </tbody>
                </table>
-            </div> -->
+            </div>
             <!-- <div class="row" style="margin-top: 4rem;">
                <div class="col-md-7" >
                   <h1 style="color: #8500A8;">Why? <span>Doer Or Thinker</span> </h1>
@@ -120,7 +112,6 @@
                   <center><img src="<?= base_url('assets/website/images/vision.png') ?>"width="100%"></center>
                </div>
             </div>
-         </div>
          </div>
       </div>
    </div>
