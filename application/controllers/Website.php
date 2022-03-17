@@ -101,6 +101,17 @@ class Website extends CI_Controller {
        }
 
     }
+
+     public function full_marks(){
+        $data['title']="Full Marks";
+        $this->load->view('website/include/header-top',$data);
+        $this->load->view('website/include/topbar',$data);
+        $this->load->view('website/include/header');
+        $this->load->view('website/pages/fullmarks');
+        $this->load->view('website/include/footer');
+        $this->load->view('website/include/footer-links');
+
+    }
   
     	
 	public function validateuserlogin(){

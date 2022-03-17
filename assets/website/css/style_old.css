@@ -12,7 +12,6 @@ body{
 	background-attachment: fixed;
 	
 }
-
 /*  */
 .radio-con{
 	box-sizing: border-box;
@@ -233,7 +232,6 @@ body{
 	font-size: 24px;
 	font-weight: 900;
 	/* text-align: center; } */
-}
 .sarkari p{ font-size: 19px;
 	text-align: justify;
 	line-height: 10px;
@@ -786,11 +784,8 @@ body{
 
 
 
-@media(max-width: 2560px){
-	.af h3{color:red; background-color:#9494c1; width:50%;}	
 
-    
-}
+
 
 
 @media(max-width: 1460px){
@@ -911,6 +906,19 @@ body{
     .Nursery {
     padding: 4px}
     .sarkari { padding: 2px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	.Courses h1, .why-us h1, .about-us h1, .contact-us h1, .about-us h2{
 	    font-size: 25px;
 	    font-weight: 600;
@@ -947,7 +955,7 @@ body{
 	    line-height: 30px;
 	    font-size: 18px;
 	}
- 
+.h3, h3 
 	
 
 
@@ -991,8 +999,8 @@ body{
 	.teach h2 { font-size: 33px; }
 	.testimonial h2 { font-size: 33px; }
 	.testimonialOverlay p { padding: 0px 0px;} 
-	.af h3{color:red; background-color:#9494c1; width:100%;}
-    
+
+
 
 
 

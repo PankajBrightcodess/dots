@@ -28,7 +28,8 @@
 	      </li>
 	      <li class="nav-item"><a class="nav-link <?php if($page == "gallery") { echo "active"; } ?>" href="<?php echo base_url('website/gallery');?>?page=gallery">Gallery</a></li>
 	      <li class="nav-item"><a class="nav-link <?php if($page == "contact") { echo "active"; } ?>" href="<?php echo base_url('website/contact');?>?page=contact">Contact Us</a></li>
-	      <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('assets/images/p.pdf');?>?page=contact">Full Marks</a></li>
+	      <!-- <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('assets/images/p.pdf');?>?page=contact">Full Marks</a></li> -->
+	      <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('website/full_marks');?>?page=full_marks">Full Marks</a></li>
 
 	    </ul>
 	  </div>
