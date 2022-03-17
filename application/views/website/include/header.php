@@ -19,6 +19,7 @@
 	 <div class="collapse navbar-collapse" style="font-weight: 700;" id="navbarSupportedContent">
 	    <ul class="navbar-nav ml-auto">
 		<!-- <li class="nav-item"></li> -->
+		 <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('website/full_marks');?>?page=full_marks">Full Marks</a></li>
 		    
 	      <li class="nav-item">
 	        <a class="nav-link" <?php if($page == "index") { echo "active"; } ?> href="<?php echo base_url('/')?>">Home</a>
@@ -29,7 +30,7 @@
 	      <li class="nav-item"><a class="nav-link <?php if($page == "gallery") { echo "active"; } ?>" href="<?php echo base_url('website/gallery');?>?page=gallery">Gallery</a></li>
 	      <li class="nav-item"><a class="nav-link <?php if($page == "contact") { echo "active"; } ?>" href="<?php echo base_url('website/contact');?>?page=contact">Contact Us</a></li>
 	      <!-- <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('assets/images/p.pdf');?>?page=contact">Full Marks</a></li> -->
-	      <li class="nav-item"><a class="nav-link <?php if($page == "Full marks") { echo "active"; } ?>" href="<?php echo base_url('website/full_marks');?>?page=full_marks">Full Marks</a></li>
+	     
 
 	    </ul>
 	  </div>
