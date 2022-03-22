@@ -176,34 +176,13 @@
 							<li>Laptop</li>
 							<li>Online Tution Classes Till The Class 12</li>
 							<li>After 12 Offline As Well As Online Classroom Program For The Preparation Of U.P.S.C Exam</li>
-							<li> Years Hostel Facility For Best Competitive Environment And Smart Educational Support and More...&nbsp;<a href="<?php echo base_url('assets/website/images/benifit.jpg')?>" class="btn btn-sm btn-success">Read More</a></li>
-							
+							<li> Years Hostel Facility For Best Competitive Environment And Smart Educational Support and More....&nbsp;<a href="<?php echo base_url('assets/website/images/benifit.jpg')?>" class="btn btn-sm btn-success">Read More</a></li>
 						</ul>
 					</h5>
 				</div>
 			</div>
 		</div>
 	</section>
-	<section>
-		<div class="container" style="margin-top: 2rem;">
-			<div class="row">
-				<div class="col-md-12">
-					<h3 style="color: #8500A8;">BENEFITS: OTHER BENEFITS FOR TOPPER</h3>
-					<hr style="border: 1px solid black">
-					<h5 style="text-align: justify; color:black;">
-						<ul>
-							<li>Cash prize.</li>
-							<li> Free services of FULLMARKS (answer writing skills).</li>
-							<li> Business scholarship of rupees 5lakh.</li>
-							<li>Educational loan for higher studies in india / foreign countries.</li>
-							<li> Medal and certificate..</li>
-						</ul>
-					</h5>
-				</div>
-			</div>
-		</div>
-	</section>
-
 
 	<section class="mis">
 		<div class="container" style="margin-top: 2rem;">

@@ -2,18 +2,18 @@
    <div class="abouOverlay">
       <div class="container">
          <center>
-            <!-- <h2 style="color: #8500A8;">OTHER BENEFITS FOR TOPPER</h2> -->
+            <h2 style="color: #8500A8;">OTHER BENEFITS FOR TOPPER</h2>
          </center>
-       <!--   <hr style="border: 1px solid black"> -->
+         <hr style="border: 1px solid black">
          <div class="row">
             <div class="col-md-12">
-           <!--  <ul>
+            <ul>
                <li><h5 style="text-align: justify; color: black">Cash prize.</h5></li>
                <li><h5 style="text-align: justify; color: black">Free services of FULLMARKS (answer writing skills).</h5></li>
                <li><h5 style="text-align: justify; color: black">Business scholarship of rupees 5lakh.</h5></li>
                <li><h5 style="text-align: justify; color: black">Educational loan for higher studies in india/ foregin countries.</h5></li>
                <li><h5 style="text-align: justify; color: black">Medal and certificate.</h5></li>
-            </ul> -->
+            </ul>
            <!--  <div class="col-md-6">
                <h5 style="color: #8500A8;">NORMALISATION FOR CLASS 2nd TO 5th</h5>
                <table class="table" style="font-weight:700">
@@ -112,7 +112,7 @@
             </div> -->
             <div class="row" style="margin-top: 4rem;">
                <div class="col-md-7">
-                  <h2 style="color: #8500A8; margin-top: 50px;">Our Vision</h2>
+                  <h2 style="color: #8500A8;">Our Vision</h2>
                   <hr style="border: 1px solid black">
                   <h5 style="text-align: justify; color:black;">We have an impact on the academic experiences of our students, helping them connect with transformative opportunities and resources. These experiences expand their perspective of themselves and the world. </h5>
                </div>
