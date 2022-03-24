@@ -21,6 +21,109 @@ class Home extends CI_Controller {
 		$data['parent_sidebar'] = $parent_sidebar;
 		$this->template->load('pages/sidebar','add',$data);
 	}
+	public function banner(){
+		$data['title'] = "Banner Entry";
+		$data['breadcrumb'] = array('admin/' => 'Dashboard');
+		$data['datatable'] = true;
+		$banner = $this->All_model->list_banner();	
+		$data['bannerlist'] = $banner;
+		
+		$this->template->load('pages','inst_banner',$data);
+
+	}
+	public function ins_banner(){
+		$this->load->helper('upload');
+		$upload_path = './assets/uploadimage/banner';
+		$allowed_types = '.gif |jpg|jpeg|png';
+		$result = upload_file("image", $upload_path, $allowed_types, time());
+		// print_r($result);die;
+		$src = $result['path'];
+		$data['image'] = $src;
+		$result = $this->All_model -> insert_banner($data);
+
+		 if(!empty($result)){
+		 	redirect('home/banner');
+		 } 
+		 else{
+		 	redirect('home/banner');
+		 }
+
+	}
+	public function about_us(){
+		$data['title'] = "About Entry";
+		$data['datatable'] = true;
+		$parent_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>'0'),'all');	
+		$data['parent_sidebar'] = $parent_sidebar;
+		$this->template->load('pages','inst_about',$data);
+
+	}
+	public function ins_about(){
+		$data =  $this->input->post();
+	
+		$result = $this->All_model -> insert_about($data);
+
+		
+		 if(!empty($result)){
+		 	redirect('home/about_us');
+		 } 
+		 else{
+		 	redirect('home/about_us');
+		 }
+
+	}
+
+    public function notice(){
+		$data['title'] = "Notice Entry";
+		$data['datatable'] = true;
+		$parent_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>'0'),'all');	
+		$data['parent_sidebar'] = $parent_sidebar;
+		$this->template->load('pages','inst_notice',$data);
+
+	}
+	public function ins_notice(){
+		$data =  $this->input->post();
+		// print_r($data);die;
+		$result = $this->All_model -> insert_notice($data);
+		
+		 if(!empty($result)){
+		 	redirect('home/notice');
+		 } 
+		 else{
+		 	redirect('home/notice');
+		 }
+
+	}
+	public function gallery(){
+		$data['title'] = "Gallery Entry";
+		$data['breadcrumb'] = array('admin/' => 'Dashboard');
+		$data['datatable'] = true;
+		$gallery = $this->All_model->list_gallery();	
+		$data['gallerylist'] = $gallery;
+		// print_r($data['gallerylist']);die;
+		$this->template->load('pages','inst_gallery',$data);
+
+	}
+	public function savegallery(){
+		// echo PRE;
+		// print_r($_FILES);die;
+		$this->load->helper('upload');
+        $upload_path = './assets/uploadimage/gallery';
+        $allowed_types = 'gif|jpg|jpeg|png';
+        $result = upload_file("image", $upload_path, $allowed_types, time());
+        $src=$result['path'];
+        $data['image'] = $src;
+        // print_r($data);die;
+        $result=$this->All_model->insert_gallery($data);
+          if(!empty($result)){
+              redirect('home/gallery');
+            }
+            else{ 
+               redirect('home/gallery');
+            }
+
+	}
+
+
 
 	public function savesidebar(){
 		//checklogin();
