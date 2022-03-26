@@ -6,16 +6,17 @@
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="<?= base_url('assets/website/images/BANNERNEW/banner001.jpg') ?>" class="d-block w-100" alt="ban1">
+			
+		 <div class="carousel-item active">
+					<img src="<?= base_url($bannerwebsite[0]['image']); ?>" class="d-block w-100" alt="ban1">
 				</div>
 				<div class="carousel-item">
-					<img src="<?= base_url('assets/website/images/BANNERNEW/banner002.jpg') ?>" class="d-block w-100" alt="ban2">
+					<img src="<?= base_url($bannerwebsite[1]['image']); ?>" class="d-block w-100" alt="ban2">
 				</div>
 				<div class="carousel-item">
-					<img src="<?= base_url('assets/website/images/BANNERNEW/003.jpg') ?>" class="d-block w-100" alt="ban3">
-				</div>
-			</div>
+					<img src="<?= base_url($bannerwebsite[2]['image']); ?>" class="d-block w-100" alt="ban3">
+				</div> 
+			</div> 
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
@@ -147,14 +148,25 @@
 					  	<marquee direction = "up" onmouseover="this.stop();" onmouseout="this.start();">
 					    <div class="row">
 					    	<div class="col-md-12">
-					    		<p><i class="fa fa-angle-double-right" style="color:#8500A8;" aria-hidden="true"></i>&nbsp;&nbsp;<strong><a href="	">Registrations will start soon..</a></strong></p>
+					    		<?php
+					    		if(!empty($noticewebsite)){
+					    			foreach ($noticewebsite as $key => $value) {
+					    				?>
+					    				<p><i class="fa fa-angle-double-right" style="color:#8500A8;" aria-hidden="true"></i>&nbsp;&nbsp;<strong><a href="<?= base_url($value['noticefile']); ?>"><?= $value['notice']; ?></a></strong></p>
+					    				<?php
+					    			}
+					    		}
+
+
+					    		 ?>
+					    		
 					    	</div>
-					    	<div class="col-md-12">
+					    	<!-- <div class="col-md-12">
 					    		<p><i class="fa fa-angle-double-right" aria-hidden="true" style="color:#8500A8;"></i>&nbsp;&nbsp;</p>
 					    	</div>
 					    	<div class="col-md-12">
 					    		<p><i class="fa fa-angle-double-right" aria-hidden="true" style="color:#8500A8;"></i>&nbsp;&nbsp;</p>
-					    	</div>
+					    	</div> -->
 					    </div>
 					</marquee>
 					  </div>

@@ -49,41 +49,102 @@ class Home extends CI_Controller {
 		 }
 
 	}
+	public function upt_banner(){
+		$data = $this->input->post();
+
+		$this->load->helper('upload');
+		$upload_path = './assets/uploadimage/banner';
+		$allowed_types = '.gif|jpg|jpeg|png';
+		$result = upload_file("image", $upload_path, $allowed_types, time());
+	   
+		$src = $result['path'];
+		$data['image'] = $src;
+		
+		$result = $this->All_model->update_banner($data);
+		
+	
+
+		 if(!empty($result)){
+		 	redirect('home/banner');
+		 }
+		 else{
+		 	redirect('home/banner');
+		 }
+			}
 	public function about_us(){
 		$data['title'] = "About Entry";
 		$data['datatable'] = true;
-		$parent_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>'0'),'all');	
-		$data['parent_sidebar'] = $parent_sidebar;
+		$about= $this->All_model->list_about();
+		$data['aboutlist'] = $about;
 		$this->template->load('pages','inst_about',$data);
 
 	}
 	public function ins_about(){
 		$data =  $this->input->post();
-	
+		echo PRE;
+		// print_r($data);die;
 		$result = $this->All_model -> insert_about($data);
-
-		
+             // print_r($result);die;
 		 if(!empty($result)){
 		 	redirect('home/about_us');
 		 } 
 		 else{
 		 	redirect('home/about_us');
 		 }
-
 	}
+	public function upt_about(){
+		echo '<pre>';
+		$data = $this->input->post();
+		$result = $this->All_model->update_about($data);
+		// print_r($result);die;
+
+		 if(!empty($result)){
+		 	redirect('home/about_us');
+		 }
+		 else{
+		 	redirect('home/about_us');
+		 }
+			}
+     
+     public function delete_about(){
+		//checklogin();
+		//validateurl_withrole('1');
+		$data = $this->input->get('ids');
+	
+		$status = $this->All_model->delete_abouts($data);
+	
+		if($status){
+			$this->session->set_flashdata("msg","Deleted Successfully !!");
+			redirect('home/about_us/');
+		}else{
+			$this->session->set_flashdata("err_msg","Try Again !!");
+			redirect('home/about_us/');
+		}
+	}
+
+
 
     public function notice(){
 		$data['title'] = "Notice Entry";
 		$data['datatable'] = true;
-		$parent_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>'0'),'all');	
-		$data['parent_sidebar'] = $parent_sidebar;
+		$notice = $this->All_model->list_notice();	
+		$data['noticelist'] = $notice;
 		$this->template->load('pages','inst_notice',$data);
 
 	}
 	public function ins_notice(){
 		$data =  $this->input->post();
-		// print_r($data);die;
-		$result = $this->All_model -> insert_notice($data);
+		// echo PRE;
+		// print_r($_FILES);die;
+		$this->load->helper('upload');
+		$upload_path = './assets/uploadimage/noticefile';
+		$allowed_types = '.doc|jpg|jpeg|docx|pdf';
+		$result = upload_file("image", $upload_path, $allowed_types, time());
+		$src = $result['path'];
+		$data['image'] = $src;
+		$result = $this->All_model->insert_notice($data);
+		
+		
 		
 		 if(!empty($result)){
 		 	redirect('home/notice');
@@ -92,6 +153,23 @@ class Home extends CI_Controller {
 		 	redirect('home/notice');
 		 }
 
+	}
+	public function upt_notice(){
+		$data = $this->input->post();
+		$this->load->helper('upload');
+		$upload_path = './assets/uploadimage/noticefile';
+		$allowed_types = '.doc|jpg|jpeg|docx|pdf';
+		$result = upload_file("image", $upload_path, $allowed_types, time());
+		$src = $result['path'];
+		$data['image'] = $src;
+		$result = $this->All_model->update_notice($data);
+		
+		if(!empty($result)){
+			redirect('home/notice');
+		}
+		else{
+			redirect('home/notice');
+		}
 	}
 	public function gallery(){
 		$data['title'] = "Gallery Entry";
@@ -122,8 +200,83 @@ class Home extends CI_Controller {
             }
 
 	}
+public function upt_gallery(){
+	   echo PRE;
+		$data = $this->input->post();
+		
+		$this->load->helper('upload');
+		$upload_path = './assets/uploadimage/gallery';
+		$allowed_types = '.gif|jpg|jpeg|png';
+		$result = upload_file("image", $upload_path, $allowed_types, time());
+		$src = $result['path'];
+		$data['image'] = $src;
+		
+		$result = $this->All_model->update_gallery($data);
+	
+		// print_r($data);die;
+	
+
+		 if(!empty($result)){
+		 	redirect('home/gallery');
+		 }
+		 else{
+		 	redirect('home/gallery');
+		 }
+			}
 
 
+
+		 public function delete_gallery(){
+		//checklogin();
+		//validateurl_withrole('1');
+		$data = $this->input->get('ids');
+
+		$status = $this->All_model->delete_gallerys($data);
+
+
+		if($status){
+			$this->session->set_flashdata("msg","Deleted Successfully !!");
+			redirect('home/gallery/');
+		}else{
+			$this->session->set_flashdata("err_msg","Try Again !!");
+			redirect('home/gallery/');
+		}
+	}	
+
+
+	 public function delete_banner(){
+		//checklogin();
+		//validateurl_withrole('1');
+		$data = $this->input->get('ids');
+
+		$status = $this->All_model->delete_banners($data);
+		
+
+		if($status){
+			$this->session->set_flashdata("msg","Deleted Successfully !!");
+			redirect('home/banner/');
+		}else{
+			$this->session->set_flashdata("err_msg","Try Again !!");
+			redirect('home/banner/');
+		}
+	}	
+
+ public function delete_notice(){
+		//checklogin();
+		//validateurl_withrole('1');
+		$data = $this->input->get('ids');
+
+		$status = $this->All_model->delete_notices($data);
+		
+
+		if($status){
+			$this->session->set_flashdata("msg","Deleted Successfully !!");
+			redirect('home/notice/');
+		}else{
+			$this->session->set_flashdata("err_msg","Try Again !!");
+			redirect('home/notice/');
+		}
+	}	
 
 	public function savesidebar(){
 		//checklogin();
@@ -276,4 +429,42 @@ class Home extends CI_Controller {
 		$this->load->library('alldata');
 		$this->alldata->updatedata();
 	}
+	function Fileupload($dir,$inputname,$allext,$pass_size,$newname){
+            //print_r($_FILES);
+            if (file_exists($_FILES["$inputname"]["tmp_name"])) {
+                //do this contain any file check
+                $file_extension = strtolower( pathinfo($_FILES["$inputname"]["name"], PATHINFO_EXTENSION));
+                $error = "";
+               if( in_array($file_extension, $allext)){
+                   //file extension check
+                $size = $_FILES["$inputname"]["size"];
+                
+                if ($size <= "$pass_size") {
+                        //dimension check
+                        $tmp=$_FILES["$inputname"]["tmp_name"];
+                        
+                        $extension = end(explode(".", $_FILES["$inputname"]["name"]));                      
+                        $name=$newname.".".$extension;
+                        //$extension[1] ="jpg";               
+                        if(move_uploaded_file($tmp, "$dir"."$name")){
+                            return true;
+                            //echo "$dir $newname.$extension[1]";
+                        }
+                    } 
+                    else{
+                        $error .= "Please upload file size must be less than 30MB";
+                        //echo $error;
+                    }
+               } else{
+                $error .="Please Upload a PDF";
+                //echo $error;
+               }
+            } else{
+                //print_r($_FILES);
+                $error .="Please Select an Document";
+                // $error;
+            }
+            return $error;
+        }
+
 }

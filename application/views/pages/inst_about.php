@@ -14,16 +14,19 @@
                                 
                           <div class="form-group row">
                                     <div class="col-sm-12">
-                                        <label>About content</label>
-                                        <?php echo form_input(array('type'=>'text','name'=>'about','id'=>'about','class'=>'form-control','placeholder'=>'Enter about us'));?>
-                                    </div>                                    
-                                </div>
-                               <!--  <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <?php echo form_input(array('type'=>'text','name'=>'base_url','id'=>'base_url','class'=>'form-control','placeholder'=>'Enter Base URL','required'=>'true'));?>
+                                      <!--   <input type="hidden" name="sno" id="sno"> -->
+                                        <label>vision</label>
+                                        <?php echo form_input(array('type'=>'text','name'=>'vision','id'=>'vision','class'=>'form-control','placeholder'=>'Enter about us'));?>
                                     </div>                                    
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-sm-12">
+                                          <label>General Instruction</label>
+                                          <textarea type=textarea height=500 width=400 name="instruction" id="instruction" class="form-control" placeholder="Enter General Instruction" required="true"></textarea>
+                                        
+                                    </div>                                    
+                                </div>
+                               <!-- <div class="form-group row">
                                     <div class="col-sm-12">
                                         <?php echo form_input(array('type'=>'text','name'=>'icon','id'=>'icon','class'=>'form-control','placeholder'=>'Fav Icon'));?>
                                     </div>                                    
@@ -76,62 +79,31 @@
                             	<table class="table table-bordered text-center">
                                     <thead>
                                         <tr>    
-                                            <th>#</th>
-                                            <th>Name</th>                                            
-                                            <th>Activation</th>                                            
-                                            <th>Base URL</th>                                            
-                                            <th>Icon</th>                                            
+                                            <th>sno</th>
+                                            <th>Vision</th>
+                                            <th>General Instruction</th>                                            
+                                            <th>Date</th>                                                                                 
                                             <th>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if(!empty($parent_sidebar)){
-                                            foreach($parent_sidebar as $pside){ $id=$pside['id']; ?>
+                                        <?php if(!empty($aboutlist)){$i=0;
+                                            // echo PRE;
+                                            // print_r($aboutlist);
+                                            foreach($aboutlist as $key => $value){ $i++; $id=$value['pid'];?>     
                                         <tr>
-                                            <td colspan="2"><?php echo $pside['name'];?></td>
-                                            <td><?php echo $pside['activate_menu'];?><br><?php echo $pside['activate_not'];?></td>
-                                            <td><?php echo $pside['base_url'];?></td>
-                                            <td><?php echo $pside['icon'];?></td>
-                                            <td><span class="float-right">
-                                            <a href='<?php echo base_url("home/delete_sidebar/$pside[id]");?>'><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$pside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $pside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php  $child_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>$id),'all');
-                                        if(!empty($child_sidebar)){
-                                            foreach($child_sidebar as $cside){ $cid=$cside['id'];?>
-                                        <tr>
-                                            <td ><b>>>>></b></td>
-                                            <td><?php echo $cside['name'];?></td>
-                                            <td><?php echo $cside['activate_menu'];?><br><?php echo $cside['activate_not'];?></td>
-                                            <td><?php echo $cside['base_url'];?></td>
-                                            <td><?php echo $cside['icon'];?></td>
-                                            <td width='20%'><span class="float-right">
-                                            <a href="<?php echo base_url("home/delete_sidebar/$cside[id]");?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$cside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $cside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php $last_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>$cid),'all');
-                                        if(!empty($last_sidebar)){
-                                            foreach($last_sidebar as $lside){ ?>
-                                        <tr>
-                                            <td width='5%'><b>>>>></b></td>
-                                            <td width='5%'><b>>>>></b></td>
-                                            <td width='70%'><?php echo $lside['name'];?></td>
-                                            <td width='20%'><span class="float-right">
-                                            <a href="<?php echo base_url("home/delete_sidebar/$lside[id]");?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$lside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $lside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php }
-                                        }
-                                            }
-                                        }
-                                            }
-                                        }?>
+                                            <td><?= $i; ?></td>
+                                            <td><?= $value['vision']; ?></td>
+                                            <td><?= $value['Instruction']; ?></td>
+                                           <td><?= $value['date']; ?></td>
+                                            <td><button class="btn btn-sm btn-success updt" data-toggle="modal" data-target="#updateModal"  data-pid="<?php echo $value['pid'];?>" data-vision="<?php echo $value['vision'];?>" data-instruction="<?php echo $value['Instruction']; ?>"><i class="fa fa-edit"></i></button> 
+                                               <button class="btn btn-danger btn-sm delete" value="<?php echo $value['pid'];?>"><i class="fa fa-trash"></i></button></td>
+                                           </tr>
+                                           
+                                           <?php 
+                                           }
+                                       }
+                                       ?>
                                         
                                     </tbody>
                                 </table>
@@ -142,7 +114,91 @@
             </div>
         </div>
         </div>
+<!-- modal of update page -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update About section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+         <!--  <form > -->
+             <?php echo form_open_multipart('home/upt_about');?>
+            <div class="form-group">
+              <label for="exampleInputabout">About section</label>
+              <input type="hidden" name="sno" id="ids">
+              <input type="text" name="uptabout"class="form-control" id="uptabout" >
+            </div>
+            <div class="form-group"> 
+                <label for="exampleInputabout">General Instruction</label>
+                <textarea type="textarea" name="uptinstruction" id="uptinstruction" class="form-control"></textarea> 
+            </div>
+           
+            <button type="submit" class="btn btn-primary" name="update">Submit</button>
+          <?php echo form_close();?>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- end the modal -->
     </section>    
+
+     <script type="text/javascript">
+        $('.delete').click(function(e){
+    debugger;
+    var ids=$(this).closest('tr').find('.delete').val();
+    if(confirm('Are you Sure !')){
+    $.ajax({
+            type:'GET',
+            url:"<?PHP echo base_url('home/delete_about'); ?>",
+            data: {ids:ids},
+            success: function(result){
+                // alert(result);
+                // console.log(result);
+                location.reload();
+                },
+                error: function(){
+                alert("error");
+                }
+    });
+}
+return false;
+})
+
+        $('.updt').click(function(e){
+            debugger;
+        var id = $(this).data('pid');
+        var about = $(this).data('vision');
+        var instruction = $(this).data('instruction');
+        // debugger;
+        $('#ids').val(id);
+        $('#uptabout').val(about);
+        $('#uptinstruction').val(instruction);
+        $.ajax({
+                url:"<?php echo base_url('home/update_about') ;?>",
+                method:"POST",
+                data:{pid:id},
+                success:function(data){
+                    var setdata = JSON.parse(data);
+                    //console.log(setdata);
+                    $('#about').val(uptabout);
+                    
+                }
+            });
+
+
+
+
+    });
+</script>
 <script>
 	
 	$(document).ready(function(e) {

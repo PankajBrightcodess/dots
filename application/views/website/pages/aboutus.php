@@ -114,7 +114,21 @@
                <div class="col-md-7">
                   <h2 style="color: #8500A8; margin-top: 50px;">Our Vision</h2>
                   <hr style="border: 1px solid black">
-                  <h5 style="text-align: justify; color:black;">We have an impact on the academic experiences of our students, helping them connect with transformative opportunities and resources. These experiences expand their perspective of themselves and the world. </h5>
+                 <?php
+                    if(!empty($aboutwebsite)){
+                     foreach ($aboutwebsite as $key => $value) {
+                    ?>
+                     
+                       <h5 style="text-align: justify; color:black;"><?=  $value['vision'];  ?></h5>
+
+                    <?php
+                     }
+                    }
+
+
+
+                  ?>
+                 <!--  <h5 style="text-align: justify; color:black;">We have an impact on the academic experiences of our students, helping them connect with transformative opportunities and resources. These experiences expand their perspective of themselves and the world. </h5> -->
                </div>
                <div class="col-md-5">
                   <center><img src="<?= base_url('assets/website/images/vision.png') ?>"width="100%"></center>
@@ -134,10 +148,26 @@
             </div>
             <div class="col-md-12">
                <ul style="color:black;">
-                  <li> <h5 style="text-align: justify; color: black">The candidates are advised to reach centre as per the time slot indicated against reporting / entry time in the admit card.</h5></li>
-                  <li> <h5 style="text-align: justify; color: black">Candidates should note that no candidate will be allowed entry after the entry closing time in any circumstance or due to any reason. Gates will be closed strictly at entry closing time.</h5></li>
-                  <li> <h5 style="text-align: justify; color: black">Candidates should invariably bring the following at the time of reporting for the examination:<br>a) Admission certificate.<br>b)Two copies of their latest coloured passport size photo.<br>c) Atleast one valid photo bearing identity proof in original with clear photograph such as passport, aadhar card / e-Aadhar card, driving licence, service ID card issued by employees, pan card, Voter card, ID card of school / College.<br>d)Facemask.</h5></li>
-                  <li> <h5 style="text-align: justify; color: black">Candidates shall be permitted to appear in the exam only at the venue as specified in the admission certificate.</h5></li>
+
+                  <?php
+                  if(!empty($aboutwebsite)){
+                     foreach ($aboutwebsite as $key => $value) {
+                        if(!empty($value['Instruction'])){
+                           ?>
+                            <li> <h5 style="text-align: justify; color: black"><?= $value['Instruction']; ?> </h5></li>
+                       <?php
+
+                        }
+                        
+                     }
+                  }
+
+                   ?>
+                   </ul>
+                  
+                
+                  <!-- <li> <h5 style="text-align: justify; color: black">Candidates should invariably bring the following at the time of reporting for the examination:<br>a) Admission certificate.<br>b)Two copies of their latest coloured passport size photo.<br>c) Atleast one valid photo bearing identity proof in original with clear photograph such as passport, aadhar card / e-Aadhar card, driving licence, service ID card issued by employees, pan card, Voter card, ID card of school / College.<br>d)Facemask.</h5></li> -->
+                  <!-- <li> <h5 style="text-align: justify; color: black">Candidates shall be permitted to appear in the exam only at the venue as specified in the admission certificate.</h5></li>
                   <li><h5 style="text-align: justify; color: black"> Candidates must ensure that they do not appear in the examination more than once. Otherwise candidature of such candidates would be cancelled and appropriate action will be taken against them.</h5></li>
                   <li><h5 style="text-align: justify; color: black"> Candidature of candidates is purely provisional it is advised that candidates should satisfy themselves that they fulfill all the eligibility conditions. If at any stage, it is found that a candidate does not fulfill any of the eligibility condition his / her candidature shall be cancelled.</h5></li>
                   <li><h5 style="text-align: justify; color: black"> Prohibited items such as watches, books, pens, paper chits, magazines, electronic gadgets, etc are strictly not allowed in the examination lab.</h5></li>
@@ -148,8 +178,8 @@
                   <li><h5 style="text-align: justify; color: black"> Candidate must strictly abide by the instructions given by the exam functionaries.</h5></li>
                   <li><h5 style="text-align: justify; color: black"> If any candidate is found obstructing the conduct of the examination or creating disturbances at the examination venue his / her candidature shall be cancelled.</h5></li>
                   <li><h5 style="text-align: justify; color: black">  If the examination does not commence at the scheduled time, candidates should follow the instructions of the exam functionaries.</h5></li><li><h5 style="text-align: justify; color: black">If any candidate is found in  inebriated state that candidate will not be allowed entry to the venue.</h5></li>
-                  <li><h5 style="text-align: justify; color: black">In case of any doubt or clarification the candidates are advised to contact the concerned regional office personally or through the helpline numbers as indicated in the admission certificate.</h5></li>
-               </ul>
+                  <li><h5 style="text-align: justify; color: black">In case of any doubt or clarification the candidates are advised to contact the concerned regional office personally or through the helpline numbers as indicated in the admission certificate.</h5></li> -->
+               
 
                <!-- <div class="button-h4"><a class="btn btn-highlight type1 " href="<?= base_url('website/aboutus')?>" title="">Read more</a></div> -->
             </div>

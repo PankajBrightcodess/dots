@@ -87,14 +87,16 @@
                                     </thead>
                                     <tbody>
                                        <?php 
-                                       if(!empty($bannerlist)){$i=0;
-                                        foreach ($bannerlist as $key => $value) {$i++;
+                                       if(!empty($bannerlist)){ $i=0;
+                                        foreach ($bannerlist as $key => $value) {$i++; $id=$value['pid'];
                                             ?>
                                             <tr>
                                                 <td><?= $i; ?></td>
                                                 <td><img src="<?= base_url($value['image']); ?>" height="200" width="200"></td>
                                                 <td><?= $value['date']; ?></td>
-                                                <td><a href="" class="btn btn-sm btn-success">View</a> <a href="" class="btn btn-sm btn-success">Delete</a> </td>
+                                                 <td><button class="btn btn-sm btn-success updt" data-toggle="modal" data-target="#updateModal"  data-pid="<?php echo $value['pid'];?>" data-image="<?php echo $value['image'];?>" ><i class="fa fa-edit"></i></button> 
+                                               <button class="btn btn-danger btn-sm delete" value="<?php echo $value['pid'];?>"><i class="fa fa-trash"></i></button></td>
+                                           </tr>
                                               <?php   
 
 
@@ -117,7 +119,67 @@
             </div>
         </div>
         </div>
+           <!-- modal of update page -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Banner section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+         <!--  <form > -->
+             <?php echo form_open_multipart('home/upt_banner');?>
+            <div class="form-group">
+              <label for="exampleInputabout">Banner section</label>
+              <input type="text" name="id" id="sno">
+            
+            <input type="file" id="image" name="image" class="form-control">
+            </div>
+           
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          <?php echo form_close();?>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- end the modal -->
     </section>    
+
+    <script type="text/javascript">
+          $('.delete').click(function(e){
+    debugger;
+    var ids=$(this).closest('tr').find('.delete').val();
+    // alert(ids);
+    if(confirm('Are you Sure !')){
+    $.ajax({
+            type:'GET',
+            url:"<?PHP echo base_url('home/delete_banner'); ?>",
+            data: {ids:ids},
+            success: function(result){
+                //alert(result);
+                // console.log(result);
+                location.reload();
+                },
+                error: function(){
+                alert("error");
+                }
+    });
+}
+return false;
+})
+        $('.updt').click(function(e){
+        var id = $(this).data('pid');
+        $('#sno').val(id); 
+    });
+</script> 
 <script>
 	
 	$(document).ready(function(e) {

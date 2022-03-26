@@ -3,6 +3,8 @@
 	if(!function_exists('upload_file')) {
   		function upload_file($name,$upload_path,$allowed_types,$file_name,$max_size=3000,$replace=false) {
     		// Getting CI class instance.
+    		
+
     		$CI = get_instance();
 			if(!$CI->load->is_loaded('upload')){
 				$CI->load->library('upload');

@@ -8,6 +8,10 @@ class Website extends CI_Controller {
 	
 	public function index(){
 		$data['title']="Home";
+        $banner = $this->All_model->list_banner();  
+        $data['bannerwebsite'] = $banner;
+        $notice = $this->All_model->list_notice();  
+        $data['noticewebsite'] = $notice;
         $this->load->view('website/include/header-top');
         $this->load->view('website/include/topbar');
         $this->load->view('website/include/header');
@@ -15,6 +19,22 @@ class Website extends CI_Controller {
         $this->load->view('website/include/footer');
         $this->load->view('website/include/footer-links');
 	}
+//      public function gallery(){
+//         $data['title']="Gallery";
+//         $gallery = $this->All_model->list_gallery(); 
+       
+//         $data['gallerywebsite'] = $gallery;
+        
+//         $this->load->view('website/include/header-top',$data);
+//          $this->load->view('website/include/topbar',$data);
+//         $this->load->view('website/include/header');
+//         $this->load->view('website/pages/gallery');
+//         $this->load->view('website/include/footer');
+//         $this->load->view('website/include/footer-links');
+
+        
+// } 
+
 
     public function login(){
         $data['title']="login";
@@ -139,7 +159,8 @@ class Website extends CI_Controller {
 
     public function aboutus(){
         $data['title']="About Us";
-        
+        $about= $this->All_model->list_about();
+        $data['aboutwebsite'] = $about;
         $this->load->view('website/include/header-top',$data);
         $this->load->view('website/include/topbar',$data);
         $this->load->view('website/include/header');
@@ -233,7 +254,11 @@ function Imageupload($dir,$inputname,$allext,$pass_width,$pass_height,$pass_size
 
 
     public function gallery(){
-        $data['title']="About Us";
+        $data['title']="Gallery";
+        $gallery = $this->All_model->list_gallery(); 
+       
+        $data['gallerywebsite'] = $gallery;
+        
         $this->load->view('website/include/header-top',$data);
          $this->load->view('website/include/topbar',$data);
         $this->load->view('website/include/header');
@@ -244,10 +269,7 @@ function Imageupload($dir,$inputname,$allext,$pass_width,$pass_height,$pass_size
         
 } 
 
-
-
-
-    }
+    
     public function apply(){
         $data['title']="About Us";
         $data['title']="Registration form";

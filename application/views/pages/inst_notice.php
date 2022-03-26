@@ -17,12 +17,12 @@
                                         <?php echo form_input(array('type'=>'text','name'=>'notice_board','id'=>'notice_board','class'=>'form-control','placeholder'=>'Enter notice_board'));?>
                                     </div>                                    
                                 </div>
-                                <!-- <div class="form-group row">
+                                 <div class="form-group row">
                                     <div class="col-sm-12">
-                                        <?php echo form_input(array('type'=>'text','name'=>'base_url','id'=>'base_url','class'=>'form-control','placeholder'=>'Enter Base URL','required'=>'true'));?>
+                                        <input type="file" id="image" name="image" accept=".pdf,.PDF,.docx,.DOCX,.DOC,.doc,.jpg,.JPG" class="form-control" required="">
                                     </div>                                    
                                 </div>
-                                <div class="form-group row">
+                                <!--<div class="form-group row">
                                     <div class="col-sm-12">
                                         <?php echo form_input(array('type'=>'text','name'=>'icon','id'=>'icon','class'=>'form-control','placeholder'=>'Fav Icon'));?>
                                     </div>                                    
@@ -76,61 +76,37 @@
                                     <thead>
                                         <tr>    
                                             <th>#</th>
-                                            <th>Name</th>                                            
-                                            <th>Activation</th>                                            
-                                            <th>Base URL</th>                                            
-                                            <th>Icon</th>                                            
+                                            <th>Notice</th>
+                                            <th>Notice File</th>                                               
+                                            <th>Date</th>                                                              
                                             <th>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if(!empty($parent_sidebar)){
-                                            foreach($parent_sidebar as $pside){ $id=$pside['id']; ?>
-                                        <tr>
-                                            <td colspan="2"><?php echo $pside['name'];?></td>
-                                            <td><?php echo $pside['activate_menu'];?><br><?php echo $pside['activate_not'];?></td>
-                                            <td><?php echo $pside['base_url'];?></td>
-                                            <td><?php echo $pside['icon'];?></td>
-                                            <td><span class="float-right">
-                                            <a href='<?php echo base_url("home/delete_sidebar/$pside[id]");?>'><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$pside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $pside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php  $child_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>$id),'all');
-                                        if(!empty($child_sidebar)){
-                                            foreach($child_sidebar as $cside){ $cid=$cside['id'];?>
-                                        <tr>
-                                            <td ><b>>>>></b></td>
-                                            <td><?php echo $cside['name'];?></td>
-                                            <td><?php echo $cside['activate_menu'];?><br><?php echo $cside['activate_not'];?></td>
-                                            <td><?php echo $cside['base_url'];?></td>
-                                            <td><?php echo $cside['icon'];?></td>
-                                            <td width='20%'><span class="float-right">
-                                            <a href="<?php echo base_url("home/delete_sidebar/$cside[id]");?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$cside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $cside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php $last_sidebar = $this->Account_model->getsidebar(array('status'=>'1','parent'=>$cid),'all');
-                                        if(!empty($last_sidebar)){
-                                            foreach($last_sidebar as $lside){ ?>
-                                        <tr>
-                                            <td width='5%'><b>>>>></b></td>
-                                            <td width='5%'><b>>>>></b></td>
-                                            <td width='70%'><?php echo $lside['name'];?></td>
-                                            <td width='20%'><span class="float-right">
-                                            <a href="<?php echo base_url("home/delete_sidebar/$lside[id]");?>"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
-                                            <a href="<?php echo base_url("home/edit_sidebar/$lside[id]");?>"><button class="btn btn-success btn-xs"><i class="fa fa-edit"></i></button></a>
-                                            <button class="btn btn-info btn-xs duplicate" type="button" data-dupid="<?php echo $lside['id'];?>"><i class="fa fa-network-wired"></i></button>
-                                            </span></td>
-                                        </tr>
-                                        <?php }
+                                        <?php 
+                                       if(!empty($noticelist)){$i=0;
+                                            foreach ($noticelist as $key => $value) {$i++; $id=$value['pid']; ?>
+                                           
+                                            <tr>
+                                                <td><?= $i; ?></td>
+                                                <td><p><?= $value['notice']; ?></p></td>
+                                                <td><a href="<?= base_url($value['noticefile']) ?>"><?= base_url($value['noticefile']) ?></a></td>
+                                                <td><?= $value['date']; ?></td>
+                                                <td><button class="btn btn-sm btn-success updt" data-toggle="modal" data-target="#updateModal"  data-pid="<?php echo $value['pid'];?>" data-notice="<?php echo $value['notice'];?>"  
+                                                    data-noticefile="<?php echo $value['noticefile']; ?>"><i class="fa fa-edit"></i></button> 
+                                               <button class="btn btn-danger btn-sm delete" value="<?php echo $value['pid'];?>"><i class="fa fa-trash"></i></button></td>
+                                           </tr>
+                                              <?php   
+
+
+                                            // code...
                                         }
-                                            }
-                                        }
-                                            }
-                                        }?>
+                                       }
+
+
+
+                                          ?>
+                                        
                                         
                                     </tbody>
                                 </table>
@@ -141,7 +117,87 @@
             </div>
         </div>
         </div>
-    </section>    
+        <!-- modal of update page -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Notice Section</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+         <!--  <form > -->
+             <?php echo form_open_multipart('home/upt_notice');?>
+            <div class="form-group">
+              <label for="exampleInputabout">Notice section</label>
+              <input type="hidden" name="id" id="sno">
+              <input type="text" name="notice"class="form-control" id="notice" >
+            </div>
+            <div class="form-group">
+                <label for="exampleInputfile">Notice File</label>
+                 <input type="file" id="image" name="image" accept=".pdf,.PDF,.docx,.DOCX,.DOC,.doc,.jpg,.JPG" class="form-control" required="">
+            </div>
+           
+            <button type="submit" class="btn btn-primary" name="update">Submit</button>
+          <?php echo form_close();?>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- end the modal -->
+    </section>   
+     <script type="text/javascript">
+
+
+          $('.delete').click(function(e){
+    debugger;
+    var ids=$(this).closest('tr').find('.delete').val();
+    // alert(ids);
+    if(confirm('Are you Sure !')){
+    $.ajax({
+            type:'GET',
+            url:"<?PHP echo base_url('home/delete_notice'); ?>",
+            data: {ids:ids},
+            success: function(result){
+                //alert(result);
+                // console.log(result);
+                location.reload();
+                },
+                error: function(){
+                alert("error");
+                }
+    });
+}
+return false;
+})
+        $('.updt').click(function(e){
+            // debugger;
+        var id = $(this).data('pid');
+        var notice = $(this).data('notice');
+        var notice_file = $(this).data('noticefile');
+        $('#sno').val(id);
+        $('#notice').val(notice);
+        $('#image').val(notice_file);
+        $.ajax({
+                url:"<?php echo base_url('home/update_notice') ;?>",
+                method:"POST",
+                data:{pid:id},
+                success:function(data){
+                    var setdata = JSON.parse(data);
+                    //console.log(setdata);
+                    $('#notice').val(notice);
+                    
+                }
+            });
+    });
+</script> 
 <script>
 	
 	$(document).ready(function(e) {
