@@ -152,7 +152,8 @@
 					    		if(!empty($noticewebsite)){
 					    			foreach ($noticewebsite as $key => $value) {
 					    				?>
-					    				<p><i class="fa fa-angle-double-right" style="color:#8500A8;" aria-hidden="true"></i>&nbsp;&nbsp;<strong><a href="<?= base_url($value['noticefile']); ?>"><?= $value['notice']; ?></a></strong></p>
+					    				<p><i class="fa fa-angle-double-right" style="color:#8500A8;" aria-hidden="true"></i>&nbsp;&nbsp;<strong><a href="#"><?= $value['notice']; ?></a></strong></p>
+					    				<!-- <p><i class="fa fa-angle-double-right" style="color:#8500A8;" aria-hidden="true"></i>&nbsp;&nbsp;<strong><a href="<?= base_url($value['noticefile']); ?>"><?= $value['notice']; ?></a></strong></p> -->
 					    				<?php
 					    			}
 					    		}
