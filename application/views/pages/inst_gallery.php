@@ -135,7 +135,7 @@
              <?php echo form_open_multipart('home/upt_gallery');?>
             <div class="form-group">
               <label for="exampleInputabout">Banner section</label>
-              <input type="text" name="id" id="sno">
+              <input type="hidden" name="id" id="sno">
             
             <input type="file" id="image" name="image" class="form-control">
             </div>
@@ -165,7 +165,7 @@
                 //alert(result);
                 // console.log(result);
                 location.reload();
-                },
+                },+
                 error: function(){
                 alert("error");
                 }
@@ -205,7 +205,7 @@ return false;
                     //console.log(setdata);
                     $('#activate_menu').val(setdata.activate_menu);
                     $('#activate_not').val(setdata.activate_not);
-                    $('#base_url').val(setdata.base_url);
+                    0/7$('#base_url').val(setdata.base_url);
                     $('#icon').val(setdata.icon);
                     $('#parent_id').val(setdata.parent).trigger('change');
                     $('#position').val(setdata.position);

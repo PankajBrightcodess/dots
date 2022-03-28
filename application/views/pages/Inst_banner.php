@@ -136,7 +136,7 @@
              <?php echo form_open_multipart('home/upt_banner');?>
             <div class="form-group">
               <label for="exampleInputabout">Banner section</label>
-              <input type="text" name="id" id="sno">
+              <input type="hidden" name="id" id="sno">
             
             <input type="file" id="image" name="image" class="form-control">
             </div>
