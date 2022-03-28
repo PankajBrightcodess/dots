@@ -28,7 +28,7 @@ class Home extends CI_Controller {
 		$banner = $this->All_model->list_banner();	
 		$data['bannerlist'] = $banner;
 		
-		$this->template->load('pages','inst_banner',$data);
+		$this->template->load('pages','Inst_banner',$data);
 
 	}
 	public function ins_banner(){
