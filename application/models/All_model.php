@@ -87,9 +87,10 @@ class All_model extends CI_Model{
 	 }
 	}
 	public function list_banner(){
-		$table =  "dot_banner";
+		$table =  "banner";
 		$query = $this->db->get($table);
-		$tables=[];
+		// print_r($query);die;
+		// $tables=[];
 		if($query->num_rows()>0){
 			$tables= $query->result_array();
 		}

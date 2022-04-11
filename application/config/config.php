@@ -25,7 +25,7 @@ date_default_timezone_set('Asia/Kolkata');
 |
 */
 if(isset($_SERVER['HTTP_HOST']) && ($_SERVER['HTTP_HOST']=='localhost') || ($_SERVER['HTTP_HOST']=='192.168.1.115')){
-	$config['base_url'] = "http://$_SERVER[HTTP_HOST]/dots/";
+	$config['base_url'] = "http://$_SERVER[HTTP_HOST]/officefiles/dots/";
 }
 else{
 	$config['base_url'] = "https://doerorthinker.com/";
