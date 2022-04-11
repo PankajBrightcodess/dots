@@ -181,7 +181,7 @@
 	<section class="mis">
 		<div class="container" style="margin-top: 2rem;">
 			<div class="row">
-				<div class="col-md-12">
+				<!-- <div class="col-md-12">
 					<h3 style="color: #8500A8;">BENEFITS: FOR TOPPERS</h3>
 					<hr style="border: 1px solid black">
 					<h5 style="text-align: justify; color:black;">
@@ -193,7 +193,7 @@
 							
 						</ul>
 					</h5>
-				</div>
+				</div>  -->
 			</div>
 		</div>
 	</section>
@@ -286,15 +286,6 @@
 			</div>
 		</div>
 	</section>
-
-	
-
-
-	
-
-
-
-	
 
 	<!-- <section class="mappp">
 		<div class="container"><center><h2>Guruji Lessons Serves in all major areas in Ranchi<hr style="border: 1px solid white" ></h2></center>
